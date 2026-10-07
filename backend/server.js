@@ -1,5 +1,6 @@
 'use strict';
 
+/* Load environment variables from backend/.env */
 require('dotenv').config();
 
 const express = require('express');
@@ -7,28 +8,31 @@ const rateLimit = require('express-rate-limit');
 const path = require('path');
 const { Readable } = require('stream');
 
+/* -------- Node version guard -------- */
 const nodeMajor = parseInt(process.versions.node.split('.')[0], 10);
 if (nodeMajor < 18) {
-  console.error('\n  ❌ Node ' + process.versions.node + ' is too old. Need Node 18+.\n');
+  console.error('\n  Node ' + process.versions.node + ' is too old. Need Node 18+.\n');
   process.exit(1);
 }
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+/* -------- Secrets: ONLY ever read from process.env -------- */
 const RAPIDAPI_KEY      = process.env.RAPIDAPI_KEY;
 const RAPIDAPI_HOST     = process.env.RAPIDAPI_HOST;
 const RAPIDAPI_ENDPOINT = process.env.RAPIDAPI_ENDPOINT;
 const CORS_ORIGIN       = process.env.CORS_ORIGIN;
 
+/* -------- Boot diagnostics -------- */
 console.log('');
 console.log('  Reels Downloader — backend');
 console.log('  ------------------------------------------');
 console.log('  Node:               ' + process.version);
 console.log('  Port:               ' + PORT);
-console.log('  RAPIDAPI_KEY:       ' + (RAPIDAPI_KEY ? 'SET' : '❌ MISSING'));
-console.log('  RAPIDAPI_HOST:      ' + (RAPIDAPI_HOST || '❌ MISSING'));
-console.log('  RAPIDAPI_ENDPOINT:  ' + (RAPIDAPI_ENDPOINT || '❌ MISSING'));
+console.log('  RAPIDAPI_KEY:       ' + (RAPIDAPI_KEY ? 'SET' : 'MISSING'));
+console.log('  RAPIDAPI_HOST:      ' + (RAPIDAPI_HOST || 'MISSING'));
+console.log('  RAPIDAPI_ENDPOINT:  ' + (RAPIDAPI_ENDPOINT || 'MISSING'));
 console.log('  ------------------------------------------');
 console.log('');
 
@@ -66,6 +70,7 @@ const apiLimiter = rateLimit({
   })
 });
 
+/* -------- Helpers -------- */
 const REEL_RE = /^https?:\/\/(?:www\.)?instagram\.com\/reels?\/([A-Za-z0-9_-]+)/i;
 
 function extractShortcode(raw) {
@@ -154,7 +159,7 @@ function buildEndpoint(shortcode) {
     .replace(/\{url\}/g, encodeURIComponent(canonical));
 }
 
-/* POST /api/download */
+/* -------- POST /api/download -------- */
 app.post('/api/download', apiLimiter, async (req, res) => {
   try {
     const rawUrl = (req.body || {}).url;
@@ -178,7 +183,7 @@ app.post('/api/download', apiLimiter, async (req, res) => {
     }
 
     const endpoint = buildEndpoint(shortcode);
-    console.log('[api] →', endpoint);
+    console.log('[api] ->', endpoint);
 
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 15000);
@@ -196,13 +201,13 @@ app.post('/api/download', apiLimiter, async (req, res) => {
       });
     } catch (err) {
       clearTimeout(timer);
-      console.log('[api] ✗ fetch failed:', err && err.message);
+      console.log('[api] fetch failed:', err && err.message);
       return res.status(504).json({ success: false, error: 'TIMEOUT',
         message: 'Something went wrong. Please try again.' });
     }
     clearTimeout(timer);
 
-    console.log('[api] ← status', apiRes.status);
+    console.log('[api] <- status', apiRes.status);
 
     if (apiRes.status === 429) {
       return res.status(429).json({ success: false, error: 'RATE_LIMIT',
@@ -213,13 +218,13 @@ app.post('/api/download', apiLimiter, async (req, res) => {
         message: "We couldn't find this Reel." });
     }
     if (apiRes.status === 401 || apiRes.status === 403) {
-      console.log('[api] ✗ auth error — check RAPIDAPI_KEY');
+      console.log('[api] auth error — check your RAPIDAPI_KEY');
       return res.status(502).json({ success: false, error: 'API',
         message: 'Something went wrong. Please try again.' });
     }
     if (!apiRes.ok) {
       const text = await apiRes.text().catch(() => '');
-      console.log('[api] ✗ body:', text.slice(0, 400));
+      console.log('[api] body:', text.slice(0, 400));
       return res.status(502).json({ success: false, error: 'API',
         message: 'Something went wrong. Please try again.' });
     }
@@ -248,7 +253,7 @@ app.post('/api/download', apiLimiter, async (req, res) => {
         message: 'No downloadable video was found.' });
     }
 
-    console.log('[ok]', result.username, '·', result.videos.length, 'qualities');
+    console.log('[ok]', result.username, '-', result.videos.length, 'qualities');
     return res.json({ success: true, data: result });
 
   } catch (err) {
@@ -258,7 +263,7 @@ app.post('/api/download', apiLimiter, async (req, res) => {
   }
 });
 
-/* GET /api/test — raw diagnostic */
+/* -------- GET /api/test -------- */
 app.get('/api/test', async (req, res) => {
   const shortcode = String(req.query.shortcode || '').replace(/[^A-Za-z0-9_-]/g, '');
   if (!shortcode) return res.status(400).json({ error: 'pass ?shortcode=ABC123' });
@@ -293,7 +298,7 @@ app.get('/api/test', async (req, res) => {
   }
 });
 
-/* GET /api/health */
+/* -------- GET /api/health -------- */
 app.get('/api/health', (req, res) => {
   res.json({
     ok: true,
@@ -302,7 +307,7 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-/* Whitelisted media proxy */
+/* -------- Whitelisted media proxy -------- */
 function isAllowedMediaUrl(raw) {
   try {
     const u = new URL(raw);
@@ -346,14 +351,14 @@ app.get('/api/media', async (req, res) => {
   }
 });
 
-/* Static frontend */
+/* -------- Static frontend -------- */
 app.use('/backend', (req, res) => res.status(404).end());
 app.use(express.static(path.join(__dirname, '..'), { index: 'index.html', dotfiles: 'ignore' }));
 
-/* 404 for /api */
+/* -------- 404 for /api -------- */
 app.use('/api', (req, res) => res.status(404).json({ success: false, error: 'NOT_FOUND' }));
 
-/* Error handler */
+/* -------- Error handler -------- */
 app.use((err, req, res, next) => {
   if (err && err.type === 'entity.parse.failed') {
     return res.status(400).json({ success: false, error: 'INVALID_URL',
@@ -365,9 +370,9 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log('  ✅ Listening on http://localhost:' + PORT);
-  console.log('  ✅ Health:  http://localhost:' + PORT + '/api/health');
-  console.log('  ✅ Test:    http://localhost:' + PORT + '/api/test?shortcode=DEywd9btU74');
-  console.log('  ➜  Open http://localhost:' + PORT + ' in your browser');
+  console.log('  Listening on http://localhost:' + PORT);
+  console.log('  Health:  http://localhost:' + PORT + '/api/health');
+  console.log('  Test:    http://localhost:' + PORT + '/api/test?shortcode=DEywd9btU74');
+  console.log('  Open http://localhost:' + PORT + ' in your browser');
   console.log('');
 });
