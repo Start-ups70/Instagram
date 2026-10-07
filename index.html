@@ -1,131 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Instagram Reels Downloader - Fast &amp; Free</title>
-<meta name="description" content="Download publicly available Instagram Reels quickly with Reels Downloader. Fast, simple and mobile-friendly.">
-<link rel="canonical" href="https://YOURDOMAIN.com/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Reels Downloader">
-<meta property="og:title" content="Instagram Reels Downloader - Fast &amp; Free">
-<meta property="og:description" content="Download publicly available Instagram Reels quickly with Reels Downloader. Fast, simple and mobile-friendly.">
-<meta property="og:url" content="https://YOURDOMAIN.com/">
-<meta name="theme-color" content="#07070a">
-<link rel="icon" href="/assets/logo/logo.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/style.css">
-<script src="/script.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Instagram Reels Downloader - Fast &amp; Free</title>
+  <meta name="description" content="Download publicly available Instagram Reels quickly with Reels Downloader. Fast, simple and mobile-friendly.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#07070A">
+  <link rel="canonical" href="https://reelsdownloader.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Reels Downloader">
+  <meta property="og:title" content="Instagram Reels Downloader - Fast &amp; Free">
+  <meta property="og:description" content="Download publicly available Instagram Reels quickly with Reels Downloader. Fast, simple and mobile-friendly.">
+  <meta property="og:url" content="https://reelsdownloader.com/">
+  <meta property="og:image" content="https://reelsdownloader.com/assets/logo/logo.svg">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Instagram Reels Downloader - Fast &amp; Free">
+  <meta name="twitter:description" content="Download publicly available Instagram Reels quickly with Reels Downloader. Fast, simple and mobile-friendly.">
+  <meta name="twitter:image" content="https://reelsdownloader.com/assets/logo/logo.svg">
+
+  <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/logo/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Reels Downloader",
+    "url": "https://reelsdownloader.com/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "description": "Download publicly available Instagram Reels quickly with Reels Downloader. Fast, simple and mobile-friendly.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap">
-    <a class="logo" href="/" aria-label="Reels Downloader home"><img src="/assets/logo/logo.svg" alt="" width="26" height="26">REELS DOWNLOADER</a>
-    <nav class="links" aria-label="Main">
-      <a href="/" aria-current="page">Home</a>
-      <a href="/#how-it-works">How It Works</a>
-      <a href="/#faq">FAQ</a>
-    </nav>
-    <a class="btn btn-sm" href="/#downloader">Download Reel</a>
-  </div>
-</header>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<main>
-  <section class="hero">
-    <div class="wrap">
-      <span class="badge">PUBLIC REELS • NO LOGIN</span>
-      <h1>Download Instagram Reels <span class="grad">in Seconds</span></h1>
-      <p class="sub">Fast, simple and mobile-friendly downloader for publicly available Instagram Reels.</p>
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a class="brand" href="index.html" aria-label="Reels Downloader home">
+        <img class="brand__mark" src="assets/logo/logo.svg" alt="" width="34" height="34">
+        <span class="brand__text">REELS<span class="brand__accent">DOWNLOADER</span></span>
+      </a>
 
-      <div id="downloader" class="card glow">
-        <form id="form" novalidate>
-          <label class="sr-only" for="url">Instagram Reel URL</label>
-          <div class="row">
-            <input id="url" type="url" inputmode="url" placeholder="Paste Instagram Reel URL" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="error">
-            <button class="btn" id="submit" type="submit"><span class="spin" id="spin" hidden aria-hidden="true"></span><span id="btnText">Download Reel</span></button>
+      <button class="nav-toggle" id="navToggle" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="nav" id="navMenu" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a class="nav__link is-active" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="pages/how-it-works.html">How It Works</a></li>
+          <li><a class="nav__link" href="pages/faq.html">FAQ</a></li>
+        </ul>
+        <a class="btn btn-primary btn-sm nav__cta" href="#downloader">Download Reel</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__grid" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <p class="badge">
+          <span class="badge__dot" aria-hidden="true"></span>
+          PUBLIC REELS • NO LOGIN
+        </p>
+
+        <h1 class="hero__title" id="heroTitle">
+          Download Instagram Reels in <span class="grad-text">Seconds</span>
+        </h1>
+
+        <p class="hero__sub">
+          Fast, simple and mobile-friendly downloader for publicly available Instagram Reels.
+        </p>
+
+        <div class="downloader" id="downloader">
+          <div class="downloader__inner">
+
+            <form class="download-form" id="downloadForm" novalidate>
+              <label class="sr-only" for="reelUrl">Instagram Reel URL</label>
+
+              <div class="download-form__row">
+                <div class="input-wrap">
+                  <svg class="input-wrap__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M10.6 13.4a1 1 0 0 1 0-1.4l4.2-4.2a3 3 0 1 1 4.2 4.2l-1.4 1.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                    <path d="M13.4 10.6a1 1 0 0 1 0 1.4l-4.2 4.2a3 3 0 1 1-4.2-4.2l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  </svg>
+                  <input
+                    class="input"
+                    id="reelUrl"
+                    name="url"
+                    type="url"
+                    inputmode="url"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    placeholder="Paste Instagram Reel URL"
+                    aria-describedby="formHint"
+                    required>
+                </div>
+
+                <button class="btn btn-primary btn-block-mobile" id="submitBtn" type="submit">
+                  <span class="spinner" id="spinner" aria-hidden="true" hidden></span>
+                  <span id="submitLabel">Download Reel</span>
+                </button>
+              </div>
+
+              <p class="form-hint" id="formHint">
+                Only publicly accessible content is supported.
+              </p>
+            </form>
+
+            <div class="alert" id="errorBox" role="alert" hidden>
+              <svg class="alert__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 7.5v5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="12" cy="16.3" r="1.1" fill="currentColor"/>
+              </svg>
+              <p class="alert__text" id="errorText"></p>
+            </div>
+
+            <div class="result" id="result" hidden>
+              <div class="result__media">
+                <img class="result__thumb" id="resultThumb" src="" alt="" width="360" height="640" loading="lazy" decoding="async">
+                <span class="result__tag">Instagram Reel</span>
+              </div>
+
+              <div class="result__body">
+                <p class="result__user" id="resultUser">@username</p>
+                <p class="result__fullname" id="resultFullName" hidden></p>
+                <p class="result__meta" id="resultMeta">720 × 1280</p>
+
+                <div class="field">
+                  <label class="field__label" for="qualitySelect">Video Quality</label>
+                  <div class="select-wrap">
+                    <select class="select" id="qualitySelect"></select>
+                    <svg class="select-wrap__chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M6 9.5l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <a class="btn btn-primary btn-block" id="downloadBtn" href="#"
+                   download target="_blank" rel="noopener">
+                  <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M12 4v11" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                    <path d="M7.5 11.2l4.5 4.5 4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 19.5h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+                  </svg>
+                  Download Video
+                </a>
+
+                <button class="btn btn-ghost btn-block" id="resetBtn" type="button">
+                  Download Another Reel
+                </button>
+              </div>
+            </div>
+
           </div>
-          <p class="err" id="error" role="alert" hidden></p>
-          <p class="hint">Only publicly accessible content is supported.</p>
-          <noscript><p class="err">Please enable JavaScript to use the downloader.</p></noscript>
-        </form>
-      </div>
+        </div>
 
-      <div id="result" class="card glow result" tabindex="-1" hidden>
-        <img id="thumb" alt="Reel thumbnail" width="180" height="320" referrerpolicy="no-referrer" decoding="async">
-        <div class="meta">
-          <p class="user" id="user"></p>
-          <p class="muted">Instagram Reel</p>
-          <p class="muted" id="size"></p>
-          <label for="quality">Video Quality</label>
-          <select id="quality"></select>
-          <a class="btn" id="dl" href="#">Download Video</a>
-          <button class="btn btn-ghost" id="again" type="button">Download Another Reel</button>
-          <p class="hint">Download links are temporary, so save the video now.</p>
+        <p class="hero__note">
+          Not affiliated with Instagram or Meta. Download only content you have the right to use.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="featuresTitle">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Why Reels Downloader</p>
+          <h2 class="section__title" id="featuresTitle">Everything you need. Nothing you don't.</h2>
+          <p class="section__sub">Built to be fast, clean and effortless on every device.</p>
+        </header>
+
+        <ul class="features">
+          <li class="feature"><span class="feature__icon" aria-hidden="true">⚡</span><h3 class="feature__title">Fast</h3><p class="feature__text">Results in a couple of seconds.</p></li>
+          <li class="feature"><span class="feature__icon" aria-hidden="true">🎥</span><h3 class="feature__title">HD Quality</h3><p class="feature__text">Every quality the Reel offers.</p></li>
+          <li class="feature"><span class="feature__icon" aria-hidden="true">📱</span><h3 class="feature__title">Mobile Friendly</h3><p class="feature__text">Designed for small screens first.</p></li>
+          <li class="feature"><span class="feature__icon" aria-hidden="true">🔒</span><h3 class="feature__title">No Login</h3><p class="feature__text">No account, no password, ever.</p></li>
+          <li class="feature"><span class="feature__icon" aria-hidden="true">🌐</span><h3 class="feature__title">Simple</h3><p class="feature__text">Paste a link. Get your video.</p></li>
+          <li class="feature"><span class="feature__icon" aria-hidden="true">🚀</span><h3 class="feature__title">Easy Download</h3><p class="feature__text">One tap and it's saved.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="stepsTitle">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">How it works</p>
+          <h2 class="section__title" id="stepsTitle">Four steps. That's it.</h2>
+        </header>
+
+        <ol class="steps">
+          <li class="step"><span class="step__num">01</span><h3 class="step__title">Paste URL</h3><p class="step__text">Copy the link of a public Instagram Reel.</p></li>
+          <li class="step"><span class="step__num">02</span><h3 class="step__title">Fetch Reel</h3><p class="step__text">We look up the publicly available media info.</p></li>
+          <li class="step"><span class="step__num">03</span><h3 class="step__title">Choose Quality</h3><p class="step__text">Pick from the qualities the Reel provides.</p></li>
+          <li class="step"><span class="step__num">04</span><h3 class="step__title">Download</h3><p class="step__text">Save the video straight to your device.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faqTitle" id="faq">
+      <div class="container container--narrow">
+        <header class="section__head">
+          <p class="eyebrow">FAQ</p>
+          <h2 class="section__title" id="faqTitle">Frequently asked questions</h2>
+        </header>
+
+        <div class="faq">
+          <details class="faq__item">
+            <summary class="faq__q">What is Reels Downloader?</summary>
+            <div class="faq__a"><p>Reels Downloader is a free, independent web tool that lets you save publicly available Instagram Reels to your device. It does not require an account and does not access private content.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">How do I download an Instagram Reel?</summary>
+            <div class="faq__a"><p>Open the Reel on Instagram, tap the share icon, choose “Copy link”, then paste that link into the box above and press <strong>Download Reel</strong>. Choose a quality and tap <strong>Download Video</strong>.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Do I need an Instagram account?</summary>
+            <div class="faq__a"><p>No. You never need to log in, and we never ask for your Instagram username or password.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Can I download private Reels?</summary>
+            <div class="faq__a"><p>No. Only publicly accessible Reels are supported. Private, deleted, restricted or age-gated content cannot be fetched, and we do not offer any way to bypass that.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Is the service free?</summary>
+            <div class="faq__a"><p>Yes, Reels Downloader is free to use. There is a fair-use rate limit to keep the service available for everyone.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Why isn't my Reel available?</summary>
+            <div class="faq__a"><p>The most common reasons are: the account is private, the Reel was deleted or archived, the link is incomplete, or the content is region-restricted. Only content that is publicly viewable without logging in can be fetched.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Why can a download link expire?</summary>
+            <div class="faq__a"><p>Instagram serves media from temporary CDN links that expire after a short time. That's why we fetch fresh information on every request and never store links permanently. If a link stops working, just fetch the Reel again.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Does the website require my Instagram password?</summary>
+            <div class="faq__a"><p>Absolutely not. We never ask for, collect or store Instagram credentials. Any site that asks for your password is not safe — leave it immediately.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Is this website affiliated with Instagram?</summary>
+            <div class="faq__a"><p>No. Reels Downloader is an independent third-party service and is not affiliated with, endorsed by, or sponsored by Instagram or Meta.</p></div>
+          </details>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="features" aria-labelledby="features-title">
-    <div class="wrap">
-      <h2 id="features-title">Why Reels Downloader?</h2>
-      <p class="lead">Download Public Reels. Fast &amp; Simple.</p>
-      <div class="grid features">
-        <article class="tile"><span class="ico" aria-hidden="true">⚡</span><h3>Fast</h3><p>Your Reel is ready in seconds.</p></article>
-        <article class="tile"><span class="ico" aria-hidden="true">🎥</span><h3>HD Quality</h3><p>Pick the best quality each Reel offers.</p></article>
-        <article class="tile"><span class="ico" aria-hidden="true">📱</span><h3>Mobile Friendly</h3><p>Designed for phones first, works everywhere.</p></article>
-        <article class="tile"><span class="ico" aria-hidden="true">🔒</span><h3>No Login</h3><p>No account and no password, ever.</p></article>
-        <article class="tile"><span class="ico" aria-hidden="true">🌐</span><h3>Simple</h3><p>Paste a link. That is all it takes.</p></article>
-        <article class="tile"><span class="ico" aria-hidden="true">🚀</span><h3>Easy Download</h3><p>One tap saves the video to your device.</p></article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="Reels Downloader home">
+          <img class="brand__mark" src="assets/logo/logo.svg" alt="" width="30" height="30">
+          <span class="brand__text">REELS<span class="brand__accent">DOWNLOADER</span></span>
+        </a>
+        <p class="footer__tag">Fast. Simple. Public Reels.</p>
       </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul class="footer__links">
+          <li><a href="pages/privacy.html">Privacy</a></li>
+          <li><a href="pages/terms.html">Terms</a></li>
+          <li><a href="pages/dmca.html">DMCA</a></li>
+          <li><a href="pages/faq.html">FAQ</a></li>
+          <li><a href="pages/how-it-works.html">How It Works</a></li>
+        </ul>
+      </nav>
     </div>
-  </section>
 
-  <section id="how-it-works" aria-labelledby="how-title">
-    <div class="wrap">
-      <h2 id="how-title">How It Works</h2>
-      <p class="lead">Four quick steps from link to saved video.</p>
-      <ol class="grid steps">
-        <li class="tile"><span class="num">01</span><h3>Paste URL</h3><p>Copy the Reel link from Instagram and paste it above.</p></li>
-        <li class="tile"><span class="num">02</span><h3>Fetch Reel</h3><p>We look up the public video for that link.</p></li>
-        <li class="tile"><span class="num">03</span><h3>Choose Quality</h3><p>Select from the qualities the Reel really has.</p></li>
-        <li class="tile"><span class="num">04</span><h3>Download</h3><p>Tap Download Video and it saves to your device.</p></li>
-      </ol>
+    <div class="container footer__bottom">
+      <p class="footer__disclaimer">
+        Reels Downloader is an independent third-party tool and is not affiliated with Instagram or Meta.
+        Only download content you have the right or permission to use.
+      </p>
+      <p class="footer__copy">© <span id="year">2025</span> Reels Downloader. All rights reserved.</p>
     </div>
-  </section>
+  </footer>
 
-  <section id="faq" aria-labelledby="faq-title">
-    <div class="wrap">
-      <h2 id="faq-title">Frequently Asked Questions</h2>
-      <p class="lead">Quick answers before you start.</p>
-      <div class="faq">
-        <details><summary>What is Reels Downloader?</summary><p>A free tool that saves publicly available Instagram Reels to your device.</p></details>
-        <details><summary>How do I download an Instagram Reel?</summary><p>Copy the Reel link in Instagram, paste it into the box above and tap Download Reel. Choose a quality, then tap Download Video.</p></details>
-        <details><summary>Do I need an Instagram account?</summary><p>No. There is nothing to log in to.</p></details>
-        <details><summary>Can I download private Reels?</summary><p>No. Only Reels from public accounts are supported.</p></details>
-        <details><summary>Is the service free?</summary><p>Yes, Reels Downloader is free to use.</p></details>
-        <details><summary>Why isn't my Reel available?</summary><p>The Reel may be private, deleted or restricted, or the link may be incomplete. Check that it opens when you are logged out of Instagram, then try again.</p></details>
-        <details><summary>Why can a download link expire?</summary><p>Instagram video links are temporary. If a download stops working, paste the Reel link again to get a fresh one.</p></details>
-        <details><summary>Does the website require my Instagram password?</summary><p>Never. We do not ask for passwords or any login details.</p></details>
-        <details><summary>Is this website affiliated with Instagram?</summary><p>No. Reels Downloader is an independent third-party tool and is not affiliated with Instagram or Meta.</p></details>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="foot">
-  <div class="wrap">
-    <strong class="brand">REELS DOWNLOADER</strong>
-    <p>Fast. Simple. Public Reels.</p>
-    <nav aria-label="Footer">
-      <a href="/pages/privacy.html">Privacy</a>
-      <a href="/pages/terms.html">Terms</a>
-      <a href="/pages/dmca.html">DMCA</a>
-      <a href="/#faq">FAQ</a>
-    </nav>
-    <small>Reels Downloader is an independent third-party tool and is not affiliated with Instagram or Meta.</small>
-  </div>
-</footer>
-
+  <script src="script.js" defer></script>
 </body>
 </html>
