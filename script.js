@@ -109,7 +109,8 @@
     var c = String(currentData.shortcode || 'reel').replace(/[^a-z0-9_-]/gi, '');
     var f = u + '-' + c + '-' + (v.quality || 'video') + '.mp4';
 
-    downloadBtn.href = API_BASE + '/api/media?url=' + encodeURIComponent(v.url) + '&name=' + encodeURIComponent(f);
+    downloadBtn.href = API_BASE + '/api/media?url=' + encodeURIComponent(v.url)
+                     + '&name=' + encodeURIComponent(f);
     downloadBtn.setAttribute('download', f);
   }
 
